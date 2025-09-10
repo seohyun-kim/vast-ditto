@@ -1,0 +1,12 @@
+{
+  "emb_dim": 256,
+  "spaces": {
+    "cluster_id_num": 33,
+    "opcode_num": 3
+  },
+  "opcode_vocab": [
+    "R",
+    "W",
+    "<unk>"
+  ]
+}

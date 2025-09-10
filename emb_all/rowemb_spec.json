@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "backend": "torch",
+  "emb_dim": 256,
+  "timediff_policy": "compute",
+  "norm_spec": "cluster_center=quantile:128,length=quantile:128,timediff=quantile:128,offset=minmax",
+  "quantile_mode": "sample",
+  "quantile_sample": 200000,
+  "quantile_seed": 42,
+  "meta": {
+    "min_cluster_id": -1,
+    "max_cluster_id": 30,
+    "min_cluster_center": 0.0,
+    "max_cluster_center": 131068760.0,
+    "min_local_offset": -256.0,
+    "max_local_offset": 256.0,
+    "min_length": 512.0,
+    "max_length": 122882854434816.0,
+    "min_timediff": -1.0,
+    "max_timediff": 766679496.0,
+    "total_rows": 18820392,
+    "seen_opcodes": [
+      "R",
+      "W"
+    ]
+  },
+  "opcode_vocab": [
+    "R",
+    "W",
+    "<unk>"
+  ],
+  "cluster_id_min": -1,
+  "cluster_id_max": 30
+}
