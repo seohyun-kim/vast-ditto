@@ -16,9 +16,31 @@
 # echo "Started PID $(cat runs/ae_stage1/train.pid). Tail: tail -f $LOG"
 
 
+# CUDA_VISLBLE_DEVICES=0 python autoencoder/train_autoencoder_stage1.py \
+#   --embed-dir dataset/emb128/embed_trace\
+#   --spec dataset/emb128/spec.json \
+#   --batch-size 128 --lr 1e-4 \
+#   --loss-scale 1000
 
-python autoencoder/train_autoencoder_stage1.py \
-  --embed-dir dataset/emb128/embed_trace\
-  --spec dataset/emb128/spec.json \
-  --batch-size 128 --lr 1e-4 \
-  --loss-scale 1000
+
+
+# 로그 디렉토리 생성
+mkdir -p runs/ae_stage1/logs
+
+# 타임스탬프 생성
+TS=$(date +%Y%m%d_%H%M%S)
+
+# 로그 파일 경로 지정
+LOG="runs/ae_stage1/logs/train_${TS}.log"
+
+# nohup 실행
+CUDA_VISIBLE_DEVICES=0 nohup python autoencoder/train_autoencoder_stage1.py \
+      --embed-dir dataset/emb128/embed_trace \
+      --spec dataset/emb128/spec.json \
+      --batch-size 32 \
+      --lr 1e-4 \
+      --loss-scale 1000 \
+    >"$LOG" 2>&1 & echo $! > runs/ae_stage1/train.pid
+
+# 실행 결과 안내
+echo "Started PID $(cat runs/ae_stage1/train.pid). Tail: tail -f $LOG"

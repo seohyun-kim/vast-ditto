@@ -231,7 +231,7 @@ def train(args):
     # ── 모델/옵티마이저 생성
     model = AEBackbone(c_in=6, c_lat=8).to(device)
     model = model.to(memory_format=torch.channels_last)
-    model = torch.compile(model, mode="max-autotune")
+    # model = torch.compile(model, mode="max-autotune")
 
     opt = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-2, fused=True)
 
